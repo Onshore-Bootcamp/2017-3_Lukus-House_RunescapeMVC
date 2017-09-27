@@ -1,0 +1,73 @@
+﻿@using RunescapeMVC.Models
+@model RunescapeMVC.ViewModels.BeastVM
+@{
+    ViewBag.Title = "ViewAllBeasts";
+}
+<div class="h2 text-center">
+    <h2>Slayer Beasts</h2>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Beast Name</th>
+                <th>Slayer Lvl Req</th>
+                <th>Combat Level</th>
+                <th>Lifepoints</th>
+                <th>Weakness</th>
+                <th>Members</th>
+                <th>Area</th>
+                <th>Gear</th>
+                <th>Exp/Kill</th>
+                <th>Assigned By</th>
+                @if (Session["UserName"] != null && (int)Session["Role"] != 1)
+                {
+                    <th class="text-center">
+                        @Html.ActionLink("Create New", "CreateBeast", "Beasts", null,
+        new { @class = "btn btn-success" })
+                    </th>
+                }
+                else
+                {
+                    //hide Create button
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BeastPO beast in Model.ListOfBeastsPO)
+            {
+                <tr>
+                    <td>@beast.Name</td>
+                    <td align="center">@beast.SlayerLevelReq</td>
+                    <td align="center">@beast.BeastCombatLevel</td>
+                    <td align="center">@beast.Lifepoints</td>
+                    <td>@beast.Weakness</td>
+                    <td>@beast.Members</td>
+                    <td>@beast.AreaName</td>
+                    <td>@beast.Gear</td>
+                    <td align="center">@beast.ExpPerKill</td>
+                    <td>@beast.MasterName</td>
+                    @if (Session["UserName"] != null && (int)Session["Role"] != 1)
+                {
+                        <td class="text-center;" nowrap>
+                            @Html.ActionLink("Delete", "DeleteBeast", "Beasts",
+                       new { BeastID = beast.BeastID }, new { @class = "btn btn-danger",
+                           @onclick = "return confirm('Are you sure you want to delete this Slayer Monster?')"})
+                        |
+                            @Html.ActionLink("Update", "UpdateBeast", "Beasts",
+                       new { BeastID = beast.BeastID }, new { @class = "btn btn-info" })
+                        </td>
+                    }
+                    else
+                    {
+                        //hide Update and Delete options
+                    }
+                </tr>
+            }
+        </tbody>
+        <tfoot>
+            <!--There is a need for this footer but not in this program-->
+        </tfoot>
+    </table>
+</div>

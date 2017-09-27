@@ -1,0 +1,31 @@
+﻿@model RunescapeMVC.ViewModels.UserVM
+@{
+    ViewBag.Title = "Login";
+}
+<style></style>
+<h2>Login</h2>
+
+<div class="form-container">
+    @using (Html.BeginForm("Login", "User", FormMethod.Post))
+    {
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => Model.User.UserName)
+                @Html.TextBoxFor(model => Model.User.UserName)
+                @Html.ValidationMessageFor(model => Model.User.UserName, "",
+        new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => Model.User.Password)
+                @Html.PasswordFor(model => Model.User.Password)
+                @Html.ValidationMessageFor(model => Model.User.Password, "",
+        new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-success" />
+                @Html.ActionLink("Register", "Register", "User",
+                      null , new { @class = "btn btn-info" })
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,82 @@
+﻿@model RunescapeMVC.ViewModels.BeastVM
+@{
+    ViewBag.Title = "CreateBeast";
+}
+
+<h2>Insert New Beast</h2>
+
+@*form for creating a Beast*@
+@using (Html.BeginForm("CreateBeast", "Beasts", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.Name)
+        @Html.TextBoxFor(model => Model.Beast.Name, new { @class = "form-control", @placeholder = "Beast..." })
+        @Html.ValidationMessageFor(model => Model.Beast.Name, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.SlayerLevelReq)
+        @Html.TextBoxFor(model => Model.Beast.SlayerLevelReq, new { @class = "form-control", @Value = "", @placeholder = "SlayerLevelReq..." })
+        @Html.ValidationMessageFor(model => Model.Beast.SlayerLevelReq, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.BeastCombatLevel)
+        @Html.TextBoxFor(model => Model.Beast.BeastCombatLevel, new { @class = "form-control", @Value = "", @placeholder = "BeastCombatLevel..." })
+        @Html.ValidationMessageFor(model => Model.Beast.BeastCombatLevel, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.Lifepoints)
+        @Html.TextBoxFor(model => Model.Beast.Lifepoints, new { @class = "form-control", @Value = "", @placeholder = "Lifepoints..." })
+        @Html.ValidationMessageFor(model => Model.Beast.Lifepoints, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.Weakness)
+        @Html.TextBoxFor(model => Model.Beast.Weakness, new { @class = "form-control", @placeholder = "Weakness..." })
+        @Html.ValidationMessageFor(model => Model.Beast.Weakness, "", new { @class = "text-danger" })
+    </div>
+
+    //dropdown list to set boolean value
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.Members)
+        @Html.DropDownListFor(model => Model.Beast.Members, new SelectList(
+    new[]
+    {
+    new { Value = "true", Text = "Yes" },
+    new { Value ="false", Text = "No"  } ,
+    }, "Value", "Text", Model), new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => Model.Beast.Members, "", new { @class = "text-danger" })
+    </div> 
+    //create a dynamic dropdown menu populated using database data
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.AreaID)
+        @Html.DropDownListFor(model => Model.Beast.AreaID, Model.Beast.AreasDropDown, "-- Select Area --",
+    new { @class = "form-control", @onfocus = "this.size=10", @onblur = "this.size=1", @onchange = "this.size=1; this.blur()" })
+        @Html.ValidationMessageFor(model => Model.Beast.AreaID, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.Gear)
+        @Html.TextBoxFor(model => Model.Beast.Gear, new { @class = "form-control", @placeholder = "Gear..." })
+        @Html.ValidationMessageFor(model => Model.Beast.Gear, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.ExpPerKill)
+        @Html.TextBoxFor(model => Model.Beast.ExpPerKill, new { @class = "form-control", @placeholder = "ExpPerKill..." })
+        @Html.ValidationMessageFor(model => Model.Beast.ExpPerKill, "", new { @class = "text-danger" })
+    </div>
+    //another dynamic dropdown for selecting the master that assigns the beast
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Beast.AssignedBy)
+        @Html.DropDownListFor(model => Model.Beast.AssignedBy, Model.Beast.MastersDropDown, "--Select Master--",
+    new { @class = "form-control", @onfocus = "this.size=10", @onblur = "this.size=1", @onchange = "this.size=1; this.blur()" })
+        @Html.ValidationMessageFor(model => Model.Beast.AssignedBy, "", new { @class = "text-danger" })
+    </div>
+    <!--Submit button-->
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" value="Submit" />
+    </div>
+}

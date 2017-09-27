@@ -1,0 +1,56 @@
+﻿@model RunescapeMVC.ViewModels.AreasInfoVM
+@{
+    ViewBag.Title = "UpdateArea";
+}
+
+<h2>UpdateArea</h2>
+
+@using (Html.BeginForm("UpdateArea", "Areas", FormMethod.Post))
+{
+    //Hidden Variable passes AreaID from selected row
+    @Html.HiddenFor(model => Model.Area.AreaID)
+     
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Area.AreaName, "Area Name")
+        @Html.TextBoxFor(model => Model.Area.AreaName, new { @class = "form-control", @placeholder = "Area..." })
+        @Html.ValidationMessageFor(model => Model.Area.AreaName, "", new { @class = "text-danger" })
+    </div>
+    //Create a static drop down menu to select the areas' Kingdom and Climate 
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Area.Kingdom)
+        @Html.DropDownListFor(model => Model.Area.Kingdom, new SelectList(
+       new[]
+       {
+           new { Value = "Kharidian Desert", Text ="Kharidian Desert"},
+           new { Value = "Wilderness", Text ="Wilderness"},
+           new { Value = "Asgarnia", Text ="Asgarnia"},
+           new { Value = "Fremennik Province", Text ="Fremennik Province"},
+           new { Value = "Karamja", Text ="Karamja"},
+           new { Value = "Land of Snow", Text ="Land of Snow"},
+           new { Value = "Misthalin", Text ="Misthalin"},
+           new { Value = "Morytania", Text ="Morytania"}
+       }, "Value", "Text", Model), new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => Model.Area.Kingdom, "", new { @class = "text-danger" })
+    </div>
+    //Climate property drop down
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Area.Climate)
+        @Html.DropDownListFor(model => Model.Area.Climate, new SelectList(
+       new[]
+       {
+           new { Value = "Dark and Damp", Text = "Dark and Damp"},
+           new { Value ="Sunny", Text = "Sunny"  } ,
+           new { Value = "Winter", Text = "Winter"},
+           new { Value = "Tropical", Text = "Tropical"},
+           new { Value = "Dry", Text = "Dry"},
+           new { Value = "Swamp", Text = "Swamp"},
+           new { Value = "Moderate", Text = "Moderate"}
+       },
+       "Value", "Text", Model), new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => Model.Area.Climate, "", new { @class = "text-danger" })
+    </div>
+    <!--Submit button-->
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" value="Submit" />
+    </div>
+}

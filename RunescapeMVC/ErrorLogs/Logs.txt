@@ -1,0 +1,2 @@
+2017-09-15 01:12:43-Cannot insert duplicate key row in object 'dbo.Users' with unique index 'IX_Users'. The duplicate key value is (Samantha).
+The statement has been terminated.

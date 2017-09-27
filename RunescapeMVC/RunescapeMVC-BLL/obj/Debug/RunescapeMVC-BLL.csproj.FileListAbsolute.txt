@@ -1,0 +1,7 @@
+C:\Users\Lukus\Documents\BootCamp\Projects\Visual Studio\RunescapeMVC\RunescapeMVC-BLL\bin\Debug\RunescapeMVC-BLL.dll
+C:\Users\Lukus\Documents\BootCamp\Projects\Visual Studio\RunescapeMVC\RunescapeMVC-BLL\bin\Debug\RunescapeMVC-BLL.pdb
+C:\Users\Lukus\Documents\BootCamp\Projects\Visual Studio\RunescapeMVC\RunescapeMVC-BLL\obj\Debug\RunescapeMVC-BLL.csprojResolveAssemblyReference.cache
+C:\Users\Lukus\Documents\BootCamp\Projects\Visual Studio\RunescapeMVC\RunescapeMVC-BLL\obj\Debug\RunescapeMVC-BLL.dll
+C:\Users\Lukus\Documents\BootCamp\Projects\Visual Studio\RunescapeMVC\RunescapeMVC-BLL\obj\Debug\RunescapeMVC-BLL.pdb
+C:\Users\Lukus\Documents\BootCamp\Projects\Visual Studio\RunescapeMVC\RunescapeMVC-BLL\bin\Debug\RunescapeMVC-DAL.dll
+C:\Users\Lukus\Documents\BootCamp\Projects\Visual Studio\RunescapeMVC\RunescapeMVC-BLL\bin\Debug\RunescapeMVC-DAL.pdb

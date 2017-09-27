@@ -1,0 +1,28 @@
+﻿@using RunescapeMVC.Models
+@model RunescapeMVC.ViewModels.UserVM
+@{
+    ViewBag.Title = "ViewProfile";
+}
+
+<div class="h2 text-center">
+    <h2>Welcome to your profile!</h2>
+</div>
+<div>
+    <p>
+        Here you can view your information we currently have stored. If you see anything that needs updated,
+        feel free to contact an admin. We're always happy to help!
+    </p>
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => Model.User.UserName, "User Name")
+    
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => Model.User.Password)
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => Model.User.FirstName, "First Name")
+</div>
+<div class="form-group">
+    @Html.LabelFor(model => Model.User.LastName, "Last Name")
+</div>

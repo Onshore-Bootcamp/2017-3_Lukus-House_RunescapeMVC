@@ -1,0 +1,47 @@
+﻿@model  RunescapeMVC.ViewModels.MasterVM
+@{
+    ViewBag.Title = "CreateMaster";
+}
+
+<h2>CreateMaster</h2>
+
+@*form for creating a SlayerMaster*@
+@using (Html.BeginForm("CreateMaster", "SlayerMasters", FormMethod.Post))
+{
+    <div class="form-group">
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Master.MasterName,"Slayer Masters' Name")
+        @Html.TextBoxFor(model => Model.Master.MasterName, new { @class = "form-control", @placeholder = "Master..." })
+        @Html.ValidationMessageFor(model => Model.Master.MasterName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Master.ReqSlayerLevel, "Required Slayer Level")
+        @Html.TextBoxFor(model => Model.Master.ReqSlayerLevel, new { @class = "form-control", @placeholder = "ReqSlayerLevel..." })
+        @Html.ValidationMessageFor(model => Model.Master.ReqSlayerLevel, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Master.RequiredCombatLevel, "Required Combat Level")
+        @Html.TextBoxFor(model => Model.Master.RequiredCombatLevel, new { @class = "form-control", @placeholder = "RequiredCombatLevel..." })
+        @Html.ValidationMessageFor(model => Model.Master.RequiredCombatLevel, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Master.RequiredQuests, "Required Quest")
+        @Html.TextBoxFor(model => Model.Master.RequiredQuests, new { @class = "form-control", @placeholder = "RequiredQuests..." })
+        @Html.ValidationMessageFor(model => Model.Master.RequiredQuests, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.Master.Location)
+        @Html.TextBoxFor(model => Model.Master.Location, new { @class = "form-control", @placeholder = "Location..." })
+        @Html.ValidationMessageFor(model => Model.Master.Location, "", new { @class = "text-danger" })
+    </div>
+
+    <!--Submit button-->
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" value="Submit" />
+    </div>
+}

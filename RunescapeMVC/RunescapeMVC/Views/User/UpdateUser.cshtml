@@ -1,0 +1,57 @@
+﻿@model RunescapeMVC.ViewModels.UserVM
+@{
+    ViewBag.Title = "UpdateUser";
+}
+
+<h2>UpdateUser</h2>
+
+@using (Html.BeginForm("UpdateUser", "User", FormMethod.Post))
+{
+    @Html.HiddenFor(model => Model.User.UserID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.User.UserName, "User Name")
+        @Html.TextBoxFor(model => Model.User.UserName, new { @class = "form-control", @placeholder = "User Name..." })
+        @Html.ValidationMessageFor(model => Model.User.UserName, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.User.Password, "New Password")
+        @Html.TextBoxFor(model => Model.User.Password,
+       new { @class = "form-control", @placeholder = "Password..." })
+        @Html.ValidationMessageFor(model => Model.User.Password, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.User.Role)
+        @Html.DropDownListFor(model => Model.User.Role, new SelectList(
+       new[]
+       {
+           new { Value = "3", Text="Administrator"},
+           new { Value = "2", Text="Power User"},
+           new { Value = "1", Text="User"}
+       }, "Value", "Text", Model), new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => Model.User.Role, "",
+       new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.User.FirstName, "First Name")
+        @Html.TextBoxFor(model => Model.User.FirstName,
+       new { @class = "form-control", @placeholder = "First Name..." })
+        @Html.ValidationMessageFor(model => Model.User.FirstName, "",
+       new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => Model.User.LastName, "Last Name")
+        @Html.TextBoxFor(model => Model.User.LastName,
+       new { @class = "form-control", @placeholder = "Last Name..." })
+        @Html.ValidationMessageFor(model => Model.User.LastName, "",
+       new { @class = "text-danger" })
+    </div>
+    <!--Submit button-->
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" value="Submit" />
+    </div>
+}
